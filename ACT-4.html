@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<style>
+#myCanvas{
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+}
+</style>
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('myCanvas')
+    var ctx = canvas.getContext("2d");
+
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.strokeRect(10, 5, 47, 40);
+
+    var grd = ctx.createLinearGradient(35, 27, 35, 67, 90, 122);
+    grd.addColorStop(0, "green");
+    grd.addColorStop(1, "blue");
+
+    ctx.fillStyle = grd;
+    ctx.fillRect(35, 27, 97, 40);
+
+    var grd2 = ctx.createRadialGradient(200, 100, 0, 200, 100, 40);
+    grd2.addColorStop(0, "green");
+    grd2.addColorStop(1, "yellow");
+
+    ctx.fillStyle = grd2;
+    ctx.fillRect(200, 100, 80, 40);
+
+    ctx.fillStyle = "rgb(105, 217, 235)";
+    ctx.fillRect(58, 52, 47, 40);
+
+    ctx.strokeStyle = "rgb(130, 243, 150)";
+    ctx.strokeRect(83, 77, 47, 40);
+
+    ctx.beginPath();
+    ctx.moveTo(120, 52);
+    ctx.lineTo(160, 52); 
+    ctx.lineTo(139, 32); 
+    ctx.closePath();
+
+    ctx.fillStyle = "rgb(105, 217, 235)";
+    ctx.fill();
+
+    ctx.strokeStyle = "rgb(130, 243, 150)";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(25, 130, 15, 0, 2 * Math.PI);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(40, 130, 15, 0, 2 * Math.PI);
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc(90, 130, 15, 0.60, 0.65 * Math.PI);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+    ctx.strokeStyle = "rgb(0, 0, 0)";
+    ctx.stroke();
+
+    ctx.font = "25px Arial Black";
+    ctx.fillStyle = "green";
+    ctx.fillText("Hola mundo", 60, 20);
+
+    ctx.strokeStyle = "green";
+    ctx.lineWidth = 0.5; 
+    ctx.strokeText("Hola mundo", 62, 22);
+
+    const img = new Image();
+    img.onload = function () {
+    ctx.drawImage(img, 280, 250, 250, 250);
+    };
+    img.src = "panda.png";
+</script>
+</html>
+

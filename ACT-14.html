@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    #myCanvas{
+        border: 1px solid black;
+    }
+</style>
+</head>
+<body>
+    <center><canvas id="myCanvas" width="500" height="500"></canvas></center>
+    <script>
+        var canvas = document.getElementById('myCanvas');
+        var ctx = canvas.getContext("2d");
+        var figuras = true;
+
+        canvas.addEventListener("mouseover", () => {
+            function getRandomColor() {
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                return `rgb(${r},${g},${b})`;
+            }
+            ctx.fillStyle = getRandomColor();
+        });
+
+        canvas.addEventListener("mousedown", (event) => {
+            var LayautX = event.clientX - canvas.getBoundingClientRect().left;
+            var LayautY = event.clientY - canvas.getBoundingClientRect().top;
+
+            if(figuras) {
+                ctx.beginPath();
+                ctx.arc(LayautX, LayautY, 15, 0, 2 * Math.PI);
+                ctx.fillStyle = ctx.fillStyle;
+                ctx.fill();
+                ctx.strokeStyle = "rgb(0, 0, 0)";
+                ctx.stroke();
+            } else {
+                ctx.fillStyle = ctx.fillStyle;
+                ctx.fillRect(LayautX - 25, LayautY - 25, 50, 50);
+            }
+        });
+
+        canvas.addEventListener("mouseout", () => {
+            figuras = !figuras;
+        });
+
+        addEventListener("mousemove", (event) => {});
+
+        onmousemove = (event) => {};
+
+    </script>
+</body>
+</html>

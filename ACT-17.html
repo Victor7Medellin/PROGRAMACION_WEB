@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        #myCanvas{
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <center><canvas id="myCanvas" width="500" height="500"></canvas></center>
+    <script>
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        var x = 225, y = 225; 
+        var color;
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowUp") {
+                y -= 10;
+            }
+            if (e.key === "ArrowDown") {
+                y += 10;
+            }
+            if (e.key === "ArrowLeft") {
+                x -= 10;
+            }
+            if (e.key === "ArrowRight") {
+                x += 10;
+            }
+            update(); 
+        });
+
+        function random_rgba() {
+            let o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',' + r().toFixed(1) + ')';
+        }
+
+        function update() {
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 500, 500)
+            color = random_rgba();
+            ctx.fillStyle = color;
+            ctx.fillRect(x, y, 50, 50);
+        }
+        update();
+    </script>
+</body>
+</html>
